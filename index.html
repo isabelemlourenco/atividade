@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+          margin: 10%;
+          background-color: rgb(255, 255, 255);
+    
+    
+        }
+    
+    
+        h3 {
+          background-color: rgb(255, 255, 255);
+          color: rgb(5, 121, 199);
+    
+    
+        }
+    
+    
+        h1 {
+          text-align: center;
+        }
+        img{
+            height: 350%;
+            width: 35%;
+        }
+        section {
+    margin-top: 10px;
+    border: 3px solid rgb(3, 55, 90);
+    padding: 10px;
+}
+
+      </style>
+</head>
+<body>
+    <h1><img src="IBGE.png" alt=""></h1>
+  <section>
+    <form name="submit-to-google-sheet2">
+    <h3>Qual seu nome?</h3>    
+    <input name="nome" type="text" placeholder="Nome">
+   
+    
+    <h3>Qual seu estado civil?</h3>
+    <select name="civil">
+    <option value="casado">--</option>
+      <option value="casado">Casado(a)</option>
+      <option value="solteiro">Solteiro(a)</option>
+      <option value="viuva">Viúvo(a)</option>
+      
+      
+    </select>
+
+    
+   
+
+    <h3>Qual sua idade?</h3>
+    <input name="idade" type="radio" value="menor que 18" >
+    <label name="idade" for="pesquisa-idade">
+      Menor que 18 anos
+    </label>
+    <input name="idade" type="radio" value="18 e 30" >
+    <label name="idade" for="pesquisa-idade">
+        de 18 a 30 anos
+    </label>
+    <input name="idade" type="radio" value="30 a 60" >
+    <label name="idade" for="pesquisa-idade">
+      de 30 a 60 anos
+    </label>
+    <input name="idade" type="radio" value="maior que 60" >
+    <label name="idade" for="pesquisa-idade">
+      maior que 60 anos
+    </label>
+
+    <h3>Qual sua média salarial?</h3>
+    <input name="sal" type="radio" value="um salario" >
+    <label name="sal" for="pesquisa-sal">
+      1 (um) salario minimo
+    </label>
+    <input name="sal" type="radio" value="dois salarios" >
+    <label name="sal" for="pesquisa-sal">
+        2 (dois) salarios minimos
+    </label>
+    <input name="sal" type="radio" value="tres ou mais" >
+    <label name="sal" for="pesquisa-idade">
+      3 (três) ou mais
+    </label>
+    
+    </label>
+
+    
+    
+
+    <h3>Qual seu endereço?</h3>    
+    <input name="endereco" type="text" placeholder="Endereço">
+  
+
+    <h3>Qual seu telefone?</h3>    
+    <input name="telefone" type="text" placeholder="Telefone">
+    
+
+    <h3>Qual seu email?</h3>    
+    <input name="email" type="text" placeholder="Email">
+    <button type="submit">Cadastre</button>
+
+    </form>
+</section>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzL3otrsakyU3uexyMsFBiqbpuHUEnBIFQoIqCEb0tSZf7INInocPxyu9-VRIaq2smO-Q/exec'
+        const form = document.forms['submit-to-google-sheet2']
+    
+    
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+            .then(response => console.log('Success!', response))
+            .catch(error => console.error('Error!', error.message))
+          form.reset();
+        })
+      </script>
+    
+</body>
+</html>
